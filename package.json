@@ -1,0 +1,10 @@
+{
+  "name": "m3mo-bot-host",
+  "version": "1.0.0",
+  "description": "Telegram Bot Hosting Platform on Vercel and Firebase",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {}
+}
