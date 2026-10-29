@@ -10,7 +10,6 @@ export default async function handler(req, res) {
       const chatId = update.message.chat.id;
       const text = update.message.text;
       
-      // التوكن الخاص بك ثابت ومباشر هنا عشان يشتغل فوراً بدون مشاكل
       const token = "8781731878:AAFu_UxTiYaLEmeff9YZiWdtJwMesxMPyN0";
 
       if (text === '/start') {
@@ -19,7 +18,7 @@ export default async function handler(req, res) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             chat_id: chatId,
-            text: 'أهلاً بك في بوت الخدمات السريعة ⚡\nاختر ما يناسبك من الأزرار أدناه:',
+            text: 'أهلاً بك يا بطل في بوت الخدمات ⚡\nاختر ما يناسبك من الأزرار أدناه:',
             reply_markup: {
               inline_keyboard: [
                 [{ text: "بوت سحب جوجل", url: "https://google-kappa-beryl.vercel.app/" }],
