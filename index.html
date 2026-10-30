@@ -29,9 +29,6 @@
 </script>
 <style>
   body { background-color: #0B1120; }
-  .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
   .chart-bar { transition: height 0.3s ease; }
 </style>
 </head>
@@ -118,6 +115,7 @@
       <span class="bg-success/10 text-success border border-success/20 px-3 py-1 rounded-lg text-xs font-bold">حاضر</span>
     </div>
   </div>
+  <button class="w-full bg-card py-3 rounded-xl text-textMuted font-bold text-sm border border-cardLight mb-6 hover:bg-cardLight transition">عرض المزيد</button>
 
   <!-- Grades Chart -->
   <div class="flex items-center justify-between mb-3">
@@ -126,7 +124,7 @@
   </div>
   <div class="bg-card p-4 rounded-2xl border border-cardLight mb-4">
     <div class="flex items-end justify-between h-32 gap-1 mb-4" dir="ltr">
-      <!-- Chart Bars (Full Marks) -->
+      <!-- Chart Bars (Full Marks 100%) -->
       <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١١</span></div>
       <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١٣</span></div>
       <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١٥</span></div>
@@ -148,31 +146,12 @@
     </div>
   </div>
 
-  <!-- Grades List -->
-  <div class="space-y-2 mb-4">
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <div>
-        <p class="text-sm font-bold mb-1">الخميس، ٢٩ أكتوبر ٢٠٢٦</p>
-        <p class="text-xs text-textMuted">امتحان حصة</p>
-      </div>
-      <div class="text-success font-bold text-lg" dir="ltr">20 / 20</div>
-    </div>
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <div>
-        <p class="text-sm font-bold mb-1">الأحد، ٢٥ أكتوبر ٢٠٢٦</p>
-        <p class="text-xs text-textMuted">امتحان حصة</p>
-      </div>
-      <div class="text-success font-bold text-lg" dir="ltr">20 / 20</div>
-    </div>
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <div>
-        <p class="text-sm font-bold mb-1">الخميس، ٢٢ أكتوبر ٢٠٢٦</p>
-        <p class="text-xs text-textMuted">امتحان حصة</p>
-      </div>
-      <div class="text-success font-bold text-lg" dir="ltr">20 / 20</div>
-    </div>
+  <!-- Grades List (Dynamic) -->
+  <div id="gradesList" class="space-y-2 mb-4">
+    <!-- سيتم إضافة الدرجات هنا عبر الجافاسكريبت -->
   </div>
-  <button class="w-full bg-card py-3 rounded-xl text-textMuted font-bold text-sm border border-cardLight mb-6 hover:bg-cardLight transition">عرض المزيد</button>
+  
+  <button id="showMoreBtn" onclick="toggleGrades()" class="w-full bg-card py-3 rounded-xl text-textMuted font-bold text-sm border border-cardLight mb-6 hover:bg-cardLight transition">عرض المزيد</button>
 
   <!-- Payments Log -->
   <div class="flex items-center justify-between mb-3">
@@ -230,7 +209,7 @@
     <h2 class="text-lg font-bold">سلوك الطلاب</h2>
     <i class="fa-solid fa-clipboard-check text-blue-400"></i>
   </div>
-  <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight mb-4">
+  <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight mb-6">
     <div>
       <p class="text-sm font-bold mb-1 text-success">تم حل الواجب بالكامل</p>
       <p class="text-xs text-textMuted">الثلاثاء، ١ سبتمبر ٢٠٢٦</p>
@@ -240,7 +219,66 @@
     </div>
   </div>
 
+  <!-- Contact Button & Footer -->
+  <div class="flex flex-col items-center justify-center mt-8 mb-4">
+    <button class="bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:opacity-90 transition flex items-center gap-2">
+      <i class="fa-solid fa-comment-dots"></i>
+      تواصل مع المستر
+    </button>
+    <p class="text-xs text-textMuted mt-4">تم إنشاء هذا التقرير عبر تطبيق Classy</p>
+  </div>
+
 </div>
+
+<!-- JavaScript للتحكم في عرض الدرجات -->
+<script>
+  const allGrades = [
+    { date: "الخميس، ٢٩ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
+    { date: "الأحد، ٢٥ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
+    { date: "الخميس، ٢٢ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
+    { date: "الثلاثاء، ٢٠ أكتوبر ٢٠٢٦", type: "امتحان شهر", score: "30", max: "30" },
+    { date: "الخميس، ١٥ أكتوبر ٢٠٢٦", type: "امتحان شهر", score: "30", max: "30" },
+    { date: "الخميس، ٨ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
+    { date: "الثلاثاء، ٦ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
+    { date: "الأحد، ٤ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
+    { date: "الخميس، ١ أكتوبر ٢٠٢٦", type: "امتحان شهر", score: "30", max: "30" },
+    { date: "الثلاثاء، ٢٩ سبتمبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
+    { date: "الخميس، ٢٤ سبتمبر ٢٠٢٦", type: "امتحان شهر", score: "20", max: "20" },
+    { date: "الثلاثاء، ٢٢ سبتمبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" }
+  ];
+
+  let isExpanded = false;
+  const gradesContainer = document.getElementById('gradesList');
+  const btn = document.getElementById('showMoreBtn');
+
+  function renderGrades() {
+    gradesContainer.innerHTML = '';
+    // بنعرض 3 درجات بس لو مش مفتوح، وكلهم لو مفتوح
+    const gradesToShow = isExpanded ? allGrades : allGrades.slice(0, 3);
+
+    gradesToShow.forEach(grade => {
+      const div = document.createElement('div');
+      div.className = "bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight";
+      div.innerHTML = `
+        <div>
+          <p class="text-sm font-bold mb-1">${grade.date}</p>
+          <p class="text-xs text-textMuted">${grade.type}</p>
+        </div>
+        <div class="text-success font-bold text-lg" dir="ltr">${grade.score} / ${grade.max}</div>
+      `;
+      gradesContainer.appendChild(div);
+    });
+  }
+
+  function toggleGrades() {
+    isExpanded = !isExpanded;
+    btn.innerText = isExpanded ? "عرض أقل" : "عرض المزيد";
+    renderGrades();
+  }
+
+  // بنشغل الدالة أول ما الصفحة تفتح
+  renderGrades();
+</script>
 
 </body>
 </html>
