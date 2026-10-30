@@ -14,8 +14,8 @@
         fontFamily: { sans: ['Tajawal', 'sans-serif'] },
         colors: {
           bg: '#0B1120',
-          card: '#111827',
-          cardLight: '#1F2937',
+          card: '#1E293B',
+          cardHover: '#334155',
           textMain: '#F9FAFB',
           textMuted: '#9CA3AF',
           success: '#10B981',
@@ -29,209 +29,222 @@
 </script>
 <style>
   body { background-color: #0B1120; }
-  .chart-bar { transition: height 0.3s ease; }
+  /* تخصيص شكل السكرول بار */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #0B1120; }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
 </style>
 </head>
 <body class="text-textMain min-h-screen pb-10 font-sans selection:bg-accent selection:text-white">
 
-<div class="max-w-md mx-auto px-4 pt-6">
-  
-  <!-- Header Section -->
-  <div class="relative flex flex-col items-center justify-center bg-gradient-to-b from-[#1E3A8A]/30 to-transparent pt-8 pb-6 rounded-3xl">
-    <div class="w-24 h-24 rounded-full border-4 border-blue-500 bg-white overflow-hidden shadow-[0_0_15px_rgba(59,130,246,0.5)] mb-3">
+<!-- بداية الحاوية بالعرض الكامل -->
+<div class="w-full">
+
+  <!-- Header Section with Blue Gradient -->
+  <div class="relative w-full bg-gradient-to-r from-[#2563EB] via-[#06B6D4] to-[#2DD4BF] h-48 flex justify-center items-start">
+    <!-- الصورة الشخصية -->
+    <div class="absolute -bottom-16 w-32 h-32 rounded-full border-4 border-bg bg-white overflow-hidden shadow-lg">
       <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Profile" class="w-full h-full object-cover">
     </div>
-    <h1 class="text-xl font-bold mb-2">محمود محمد علي عيسي</h1>
-    <div class="flex gap-2 text-xs">
-      <span class="bg-blue-900/50 text-blue-400 border border-blue-800 px-3 py-1 rounded-full">ذكر</span>
-      <span class="bg-gray-800 text-gray-400 border border-gray-700 px-3 py-1 rounded-full">الثالث الاعدادي اولاد</span>
+  </div>
+
+  <!-- بيانات الطالب -->
+  <div class="flex flex-col items-center justify-center mt-20 mb-8 px-4">
+    <h1 class="text-2xl font-bold mb-3">محمود محمد علي عيسي</h1>
+    <div class="flex gap-3 text-sm">
+      <span class="bg-blue-900/40 text-blue-400 border border-blue-800 px-4 py-1.5 rounded-full font-bold">ذكر</span>
+      <span class="bg-gray-800 text-gray-300 border border-gray-700 px-4 py-1.5 rounded-full font-bold">الثالث الاعدادي اولاد</span>
     </div>
   </div>
 
-  <!-- Top Stats Section -->
-  <div class="grid grid-cols-3 gap-3 mb-6">
-    <div class="bg-card rounded-2xl p-4 flex flex-col items-center justify-center border border-cardLight">
-      <div class="w-8 h-8 rounded-full bg-success/10 flex items-center justify-center mb-2">
-        <i class="fa-solid fa-check text-success"></i>
+  <!-- الحاوية الرئيسية للمحتوى -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Top Stats Section (حضور - غياب - مستوى) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="bg-card rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 shadow-lg">
+        <div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-check text-success text-xl"></i>
+        </div>
+        <span class="text-3xl font-bold">25</span>
+        <span class="text-sm text-textMuted mt-2">حضور</span>
       </div>
-      <span class="text-xl font-bold">25</span>
-      <span class="text-xs text-textMuted mt-1">حضور</span>
-    </div>
-    <div class="bg-card rounded-2xl p-4 flex flex-col items-center justify-center border border-cardLight">
-      <div class="w-8 h-8 rounded-full bg-danger/10 flex items-center justify-center mb-2">
-        <i class="fa-solid fa-xmark text-danger"></i>
+      <div class="bg-card rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 shadow-lg">
+        <div class="w-10 h-10 rounded-full bg-danger/10 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-xmark text-danger text-xl"></i>
+        </div>
+        <span class="text-3xl font-bold">0</span>
+        <span class="text-sm text-textMuted mt-2">غياب</span>
       </div>
-      <span class="text-xl font-bold">0</span>
-      <span class="text-xs text-textMuted mt-1">غياب</span>
-    </div>
-    <div class="bg-card rounded-2xl p-4 flex flex-col items-center justify-center border border-cardLight">
-      <div class="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center mb-2">
-        <i class="fa-solid fa-user-astronaut text-purple-500"></i>
+      <div class="bg-card rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 shadow-lg">
+        <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-user-astronaut text-purple-400 text-xl"></i>
+        </div>
+        <span class="text-lg font-bold text-purple-400">ممتاز</span>
+        <span class="text-sm text-textMuted mt-2">المستوى</span>
       </div>
-      <span class="text-sm font-bold text-purple-400">ممتاز</span>
-      <span class="text-xs text-textMuted mt-1">المستوى</span>
     </div>
-  </div>
 
-  <!-- Schedule Section -->
-  <div class="flex items-center justify-between mb-3">
-    <h2 class="text-lg font-bold">جدول الحصص</h2>
-    <i class="fa-regular fa-clock text-purple-400"></i>
-  </div>
-  <div class="grid grid-cols-3 gap-3 mb-6">
-    <div class="bg-card rounded-2xl p-4 flex flex-col items-center justify-center border border-cardLight">
-      <i class="fa-regular fa-clock text-purple-400 mb-2 text-lg"></i>
-      <span class="font-bold text-sm">الأحد</span>
-      <span class="text-xs text-textMuted mt-1 font-mono">17:00</span>
+    <!-- Schedule Section (جدول الحصص) -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold">جدول الحصص</h2>
+      <i class="fa-regular fa-clock text-purple-400 text-xl"></i>
     </div>
-    <div class="bg-card rounded-2xl p-4 flex flex-col items-center justify-center border border-cardLight">
-      <i class="fa-regular fa-clock text-purple-400 mb-2 text-lg"></i>
-      <span class="font-bold text-sm">الثلاثاء</span>
-      <span class="text-xs text-textMuted mt-1 font-mono">17:00</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="bg-card rounded-2xl p-5 flex flex-col items-center justify-center border border-gray-700">
+        <i class="fa-regular fa-clock text-purple-400 mb-3 text-2xl"></i>
+        <span class="font-bold text-lg">الأحد</span>
+        <span class="text-sm text-textMuted mt-1 font-mono">17:00</span>
+      </div>
+      <div class="bg-card rounded-2xl p-5 flex flex-col items-center justify-center border border-gray-700">
+        <i class="fa-regular fa-clock text-purple-400 mb-3 text-2xl"></i>
+        <span class="font-bold text-lg">الثلاثاء</span>
+        <span class="text-sm text-textMuted mt-1 font-mono">17:00</span>
+      </div>
+      <div class="bg-card rounded-2xl p-5 flex flex-col items-center justify-center border border-gray-700">
+        <i class="fa-regular fa-clock text-purple-400 mb-3 text-2xl"></i>
+        <span class="font-bold text-lg">الخميس</span>
+        <span class="text-sm text-textMuted mt-1 font-mono">17:00</span>
+      </div>
     </div>
-    <div class="bg-card rounded-2xl p-4 flex flex-col items-center justify-center border border-cardLight">
-      <i class="fa-regular fa-clock text-purple-400 mb-2 text-lg"></i>
-      <span class="font-bold text-sm">الخميس</span>
-      <span class="text-xs text-textMuted mt-1 font-mono">17:00</span>
-    </div>
-  </div>
 
-  <!-- Attendance Log -->
-  <div class="flex items-center justify-between mb-3">
-    <h2 class="text-lg font-bold">سجل الحضور</h2>
-    <i class="fa-regular fa-calendar-days text-blue-400"></i>
-  </div>
-  <div class="space-y-2 mb-6">
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <span class="text-sm text-textMuted">الخميس، ٢٩ أكتوبر ٢٠٢٦</span>
-      <span class="bg-success/10 text-success border border-success/20 px-3 py-1 rounded-lg text-xs font-bold">حاضر</span>
+    <!-- Attendance Log (سجل الحضور) -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold">سجل الحضور</h2>
+      <i class="fa-regular fa-calendar-days text-blue-400 text-xl"></i>
     </div>
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <span class="text-sm text-textMuted">الخميس، ٢٢ أكتوبر ٢٠٢٦</span>
-      <span class="bg-success/10 text-success border border-success/20 px-3 py-1 rounded-lg text-xs font-bold">حاضر</span>
+    <div class="space-y-3 mb-8">
+      <div class="bg-card p-5 rounded-2xl flex justify-between items-center border border-gray-700">
+        <span class="text-base text-gray-300">الخميس، ٢٩ أكتوبر ٢٠٢٦</span>
+        <span class="bg-success/10 text-success border border-success/20 px-4 py-1.5 rounded-lg text-sm font-bold">حاضر</span>
+      </div>
+      <div class="bg-card p-5 rounded-2xl flex justify-between items-center border border-gray-700">
+        <span class="text-base text-gray-300">الخميس، ٢٢ أكتوبر ٢٠٢٦</span>
+        <span class="bg-success/10 text-success border border-success/20 px-4 py-1.5 rounded-lg text-sm font-bold">حاضر</span>
+      </div>
+      <div class="bg-card p-5 rounded-2xl flex justify-between items-center border border-gray-700">
+        <span class="text-base text-gray-300">الأحد، ١٨ أكتوبر ٢٠٢٦</span>
+        <span class="bg-success/10 text-success border border-success/20 px-4 py-1.5 rounded-lg text-sm font-bold">حاضر</span>
+      </div>
     </div>
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <span class="text-sm text-textMuted">الأحد، ١٨ أكتوبر ٢٠٢٦</span>
-      <span class="bg-success/10 text-success border border-success/20 px-3 py-1 rounded-lg text-xs font-bold">حاضر</span>
-    </div>
-  </div>
-  <button class="w-full bg-card py-3 rounded-xl text-textMuted font-bold text-sm border border-cardLight mb-6 hover:bg-cardLight transition">عرض المزيد</button>
 
-  <!-- Grades Chart -->
-  <div class="flex items-center justify-between mb-3">
-    <h2 class="text-lg font-bold">آخر الدرجات</h2>
-    <i class="fa-solid fa-trophy text-orange-400"></i>
-  </div>
-  <div class="bg-card p-4 rounded-2xl border border-cardLight mb-4">
-    <div class="flex items-end justify-between h-32 gap-1 mb-4" dir="ltr">
-      <!-- Chart Bars (Full Marks 100%) -->
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١١</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١٣</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١٥</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١٨</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">٢٠</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">٢٢</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">٢٥</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">٢٧</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">٢٩</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">٣</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">٨</span></div>
-      <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[9px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-sm" style="height: 100%;"></div><span class="text-[8px] text-gray-500 mt-1">١١</span></div>
+    <!-- Grades Chart (الرسم البياني) -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold">آخر الدرجات</h2>
+      <i class="fa-solid fa-trophy text-orange-400 text-xl"></i>
+    </div>
+    <div class="bg-card p-6 rounded-2xl border border-gray-700 mb-6 shadow-lg">
+      <div class="flex items-end justify-between h-48 gap-2 mb-6" dir="ltr">
+        <!-- Full Marks Bars -->
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١١</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١٣</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١٥</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١٨</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٢٠</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٢٢</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٢٥</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٢٧</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٢٩</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٣</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٨</span></div>
+        <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١١</span></div>
+      </div>
+      
+      <div class="flex justify-center items-center gap-6 text-sm mt-4 border-t border-gray-700 pt-4">
+        <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-accent"></div><span class="text-gray-400">امتحان حصة</span></div>
+        <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-warning"></div><span class="text-gray-400">امتحان شهر</span></div>
+      </div>
+    </div>
+
+    <!-- Grades List (قائمة الدرجات التفاعلية) -->
+    <div id="gradesList" class="space-y-3 mb-4">
+      <!-- بيتم تعبئتها بالـ JS -->
     </div>
     
-    <!-- Chart Legend -->
-    <div class="flex justify-center items-center gap-4 text-xs mt-2 border-t border-cardLight pt-3">
-      <div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-accent"></div><span class="text-gray-400">امتحان حصة</span></div>
-      <div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-warning"></div><span class="text-gray-400">امتحان شهر</span></div>
-    </div>
-  </div>
+    <!-- أزرار عرض المزيد / أقل -->
+    <button id="showMoreBtn" onclick="toggleGrades()" class="w-full bg-[#1E293B] py-4 rounded-xl text-warning font-bold text-lg mb-8 hover:bg-[#334155] transition shadow-md border border-gray-700">عرض المزيد</button>
 
-  <!-- Grades List (Dynamic) -->
-  <div id="gradesList" class="space-y-2 mb-4">
-    <!-- سيتم إضافة الدرجات هنا عبر الجافاسكريبت -->
-  </div>
-  
-  <button id="showMoreBtn" onclick="toggleGrades()" class="w-full bg-card py-3 rounded-xl text-textMuted font-bold text-sm border border-cardLight mb-6 hover:bg-cardLight transition">عرض المزيد</button>
-
-  <!-- Payments Log -->
-  <div class="flex items-center justify-between mb-3">
-    <h2 class="text-lg font-bold">سجل المدفوعات والاشتراكات</h2>
-    <i class="fa-solid fa-wallet text-success"></i>
-  </div>
-  <div class="space-y-2 mb-6">
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <div>
-        <p class="text-sm font-bold mb-1">الثلاثاء، ٢٩ سبتمبر ٢٠٢٦</p>
-        <p class="text-xs text-textMuted">كاش</p>
-      </div>
-      <div class="text-success font-bold text-lg" dir="ltr">100 ج.م</div>
+    <!-- Payments Log (سجل المدفوعات) -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold">سجل المدفوعات والاشتراكات</h2>
+      <i class="fa-solid fa-wallet text-success text-xl"></i>
     </div>
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <div>
-        <p class="text-sm font-bold mb-1">الثلاثاء، ١ سبتمبر ٢٠٢٦</p>
-        <p class="text-xs text-textMuted">كاش</p>
+    <div class="space-y-3 mb-8">
+      <div class="bg-card p-5 rounded-2xl flex justify-between items-center border border-gray-700">
+        <div>
+          <p class="text-base font-bold mb-1">الثلاثاء، ٢٩ سبتمبر ٢٠٢٦</p>
+          <p class="text-sm text-textMuted">كاش</p>
+        </div>
+        <div class="text-success font-bold text-xl" dir="ltr">100 ج.م</div>
       </div>
-      <div class="text-success font-bold text-lg" dir="ltr">100 ج.م</div>
-    </div>
-    <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight">
-      <div>
-        <p class="text-sm font-bold mb-1">الجمعة، ٧ أغسطس ٢٠٢٦</p>
-        <p class="text-xs text-textMuted">دفعة</p>
+      <div class="bg-card p-5 rounded-2xl flex justify-between items-center border border-gray-700">
+        <div>
+          <p class="text-base font-bold mb-1">الثلاثاء، ١ سبتمبر ٢٠٢٦</p>
+          <p class="text-sm text-textMuted">كاش</p>
+        </div>
+        <div class="text-success font-bold text-xl" dir="ltr">100 ج.م</div>
       </div>
-      <div class="text-success font-bold text-lg" dir="ltr">100 ج.م</div>
-    </div>
-  </div>
-
-  <!-- Wallet Points -->
-  <div class="flex items-center justify-between mb-3">
-    <h2 class="text-lg font-bold">محفظة النقاط</h2>
-    <i class="fa-solid fa-coins text-warning"></i>
-  </div>
-  <div class="bg-card p-5 rounded-2xl border border-cardLight flex justify-between items-center mb-6">
-    <div>
-      <p class="text-xs text-textMuted mb-1">الرصيد الحالي</p>
-      <p class="text-3xl font-bold">30 <span class="text-sm text-textMuted font-normal">نقطة</span></p>
-    </div>
-    <div class="flex gap-6 text-center">
-      <div>
-        <p class="text-xs text-textMuted mb-1">المستوى</p>
-        <p class="text-xl font-bold text-warning">1</p>
-      </div>
-      <div>
-        <p class="text-xs text-textMuted mb-1">النقاط المحصلة</p>
-        <p class="text-xl font-bold text-accent">0</p>
+      <div class="bg-card p-5 rounded-2xl flex justify-between items-center border border-gray-700">
+        <div>
+          <p class="text-base font-bold mb-1">الجمعة، ٧ أغسطس ٢٠٢٦</p>
+          <p class="text-sm text-textMuted">دفعة</p>
+        </div>
+        <div class="text-success font-bold text-xl" dir="ltr">100 ج.م</div>
       </div>
     </div>
-  </div>
 
-  <!-- Behavior Log -->
-  <div class="flex items-center justify-between mb-3">
-    <h2 class="text-lg font-bold">سلوك الطلاب</h2>
-    <i class="fa-solid fa-clipboard-check text-blue-400"></i>
-  </div>
-  <div class="bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight mb-6">
-    <div>
-      <p class="text-sm font-bold mb-1 text-success">تم حل الواجب بالكامل</p>
-      <p class="text-xs text-textMuted">الثلاثاء، ١ سبتمبر ٢٠٢٦</p>
+    <!-- Wallet Points (محفظة النقاط) -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold">محفظة النقاط</h2>
+      <i class="fa-solid fa-coins text-warning text-xl"></i>
     </div>
-    <div class="w-8 h-8 rounded-full bg-success/10 flex items-center justify-center">
-      <i class="fa-solid fa-check text-success"></i>
+    <div class="bg-gradient-to-l from-[#1E293B] to-[#0F172A] p-6 rounded-2xl border border-gray-700 flex flex-col md:flex-row justify-between items-center mb-8 shadow-lg">
+      <div class="text-center md:text-right mb-4 md:mb-0">
+        <p class="text-sm text-textMuted mb-2">الرصيد الحالي</p>
+        <p class="text-4xl font-bold">30 <span class="text-base text-textMuted font-normal">نقطة</span></p>
+      </div>
+      <div class="flex gap-10 text-center">
+        <div>
+          <p class="text-sm text-textMuted mb-2">المستوى</p>
+          <p class="text-2xl font-bold text-warning">1</p>
+        </div>
+        <div>
+          <p class="text-sm text-textMuted mb-2">النقاط المحصلة</p>
+          <p class="text-2xl font-bold text-accent">0</p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- Contact Button & Footer -->
-  <div class="flex flex-col items-center justify-center mt-8 mb-4">
-    <button class="bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:opacity-90 transition flex items-center gap-2">
-      <i class="fa-solid fa-comment-dots"></i>
-      تواصل مع المستر
-    </button>
-    <p class="text-xs text-textMuted mt-4">تم إنشاء هذا التقرير عبر تطبيق Classy</p>
-  </div>
+    <!-- Behavior Log (سلوك الطلاب) -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold">سلوك الطلاب</h2>
+      <i class="fa-solid fa-clipboard-check text-blue-400 text-xl"></i>
+    </div>
+    <div class="bg-card p-5 rounded-2xl flex justify-between items-center border border-gray-700 mb-10 shadow-lg">
+      <div>
+        <p class="text-base font-bold mb-1 text-success">تم حل الواجب بالكامل</p>
+        <p class="text-sm text-textMuted">الثلاثاء، ١ سبتمبر ٢٠٢٦</p>
+      </div>
+      <div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center">
+        <i class="fa-solid fa-check text-success text-xl"></i>
+      </div>
+    </div>
 
-</div>
+    <!-- Contact Button & Footer -->
+    <div class="flex flex-col items-center justify-center mt-6 mb-8">
+      <button class="bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-bold py-4 px-12 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:opacity-90 transition flex items-center gap-3 text-lg">
+        <i class="fa-solid fa-comment-dots"></i>
+        تواصل مع المستر
+      </button>
+      <p class="text-sm text-textMuted mt-6">تم إنشاء هذا التقرير عبر تطبيق Classy</p>
+    </div>
+
+  </div> <!-- نهاية الحاوية الرئيسية -->
+</div> <!-- نهاية العرض الكامل -->
 
 <!-- JavaScript للتحكم في عرض الدرجات -->
 <script>
+  // كل الدرجات (فل مارك)
   const allGrades = [
     { date: "الخميس، ٢٩ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
     { date: "الأحد، ٢٥ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
@@ -253,18 +266,18 @@
 
   function renderGrades() {
     gradesContainer.innerHTML = '';
-    // بنعرض 3 درجات بس لو مش مفتوح، وكلهم لو مفتوح
+    // لو مش مفتوح بنعرض 3 بس، لو مفتوح بنعرض الكل
     const gradesToShow = isExpanded ? allGrades : allGrades.slice(0, 3);
 
     gradesToShow.forEach(grade => {
       const div = document.createElement('div');
-      div.className = "bg-card p-4 rounded-xl flex justify-between items-center border border-cardLight";
+      div.className = "bg-[#1E293B] p-5 rounded-2xl flex justify-between items-center border border-gray-700";
       div.innerHTML = `
         <div>
-          <p class="text-sm font-bold mb-1">${grade.date}</p>
-          <p class="text-xs text-textMuted">${grade.type}</p>
+          <p class="text-base font-bold mb-1">${grade.date}</p>
+          <p class="text-sm text-[#9CA3AF]">${grade.type}</p>
         </div>
-        <div class="text-success font-bold text-lg" dir="ltr">${grade.score} / ${grade.max}</div>
+        <div class="text-success font-bold text-xl" dir="ltr">${grade.score} / ${grade.max}</div>
       `;
       gradesContainer.appendChild(div);
     });
@@ -272,7 +285,16 @@
 
   function toggleGrades() {
     isExpanded = !isExpanded;
-    btn.innerText = isExpanded ? "عرض أقل" : "عرض المزيد";
+    // تغيير النص واللون بناءً على الحالة
+    if (isExpanded) {
+      btn.innerText = "عرض أقل";
+      btn.classList.remove('text-warning');
+      btn.classList.add('text-accent'); // لون أزرق
+    } else {
+      btn.innerText = "عرض المزيد";
+      btn.classList.remove('text-accent');
+      btn.classList.add('text-warning'); // لون أصفر
+    }
     renderGrades();
   }
 
@@ -281,4 +303,4 @@
 </script>
 
 </body>
-</html>
+      </html>
