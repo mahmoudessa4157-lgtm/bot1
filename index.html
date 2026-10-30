@@ -29,7 +29,6 @@
 </script>
 <style>
   body { background-color: #0B1120; }
-  /* تخصيص شكل السكرول بار */
   ::-webkit-scrollbar { width: 8px; }
   ::-webkit-scrollbar-track { background: #0B1120; }
   ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -37,18 +36,17 @@
 </head>
 <body class="text-textMain min-h-screen pb-10 font-sans selection:bg-accent selection:text-white">
 
-<!-- بداية الحاوية بالعرض الكامل -->
 <div class="w-full">
-
-  <!-- Header Section with Blue Gradient -->
+  <!-- Header Section -->
   <div class="relative w-full bg-gradient-to-r from-[#2563EB] via-[#06B6D4] to-[#2DD4BF] h-48 flex justify-center items-start">
-    <!-- الصورة الشخصية -->
-    <div class="absolute -bottom-16 w-32 h-32 rounded-full border-4 border-bg bg-white overflow-hidden shadow-lg">
-      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Profile" class="w-full h-full object-cover">
+    <!-- الصورة الشخصية المحدثة -->
+    <div class="absolute -bottom-16 w-32 h-32 rounded-full border-4 border-bg bg-white overflow-hidden shadow-lg flex items-center justify-center">
+      <!-- استخدمت الصورة اللي إنت بعتها -->
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Profile" class="w-[130%] h-[130%] object-cover object-top mt-2">
     </div>
   </div>
 
-  <!-- بيانات الطالب -->
+  <!-- Student Info -->
   <div class="flex flex-col items-center justify-center mt-20 mb-8 px-4">
     <h1 class="text-2xl font-bold mb-3">محمود محمد علي عيسي</h1>
     <div class="flex gap-3 text-sm">
@@ -57,10 +55,8 @@
     </div>
   </div>
 
-  <!-- الحاوية الرئيسية للمحتوى -->
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Top Stats Section (حضور - غياب - مستوى) -->
+    <!-- Stats -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
       <div class="bg-card rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 shadow-lg">
         <div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center mb-3">
@@ -85,7 +81,7 @@
       </div>
     </div>
 
-    <!-- Schedule Section (جدول الحصص) -->
+    <!-- Schedule -->
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-bold">جدول الحصص</h2>
       <i class="fa-regular fa-clock text-purple-400 text-xl"></i>
@@ -108,7 +104,7 @@
       </div>
     </div>
 
-    <!-- Attendance Log (سجل الحضور) -->
+    <!-- Attendance -->
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-bold">سجل الحضور</h2>
       <i class="fa-regular fa-calendar-days text-blue-400 text-xl"></i>
@@ -128,14 +124,13 @@
       </div>
     </div>
 
-    <!-- Grades Chart (الرسم البياني) -->
+    <!-- Grades Chart -->
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-bold">آخر الدرجات</h2>
       <i class="fa-solid fa-trophy text-orange-400 text-xl"></i>
     </div>
     <div class="bg-card p-6 rounded-2xl border border-gray-700 mb-6 shadow-lg">
       <div class="flex items-end justify-between h-48 gap-2 mb-6" dir="ltr">
-        <!-- Full Marks Bars -->
         <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١١</span></div>
         <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١٣</span></div>
         <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">30/30</span><div class="w-full bg-warning rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١٥</span></div>
@@ -149,22 +144,18 @@
         <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">٨</span></div>
         <div class="flex flex-col items-center flex-1 h-full justify-end"><span class="text-[10px] text-gray-400 mb-1">20/20</span><div class="w-full bg-accent rounded-t-md" style="height: 100%;"></div><span class="text-[10px] text-gray-500 mt-2">١١</span></div>
       </div>
-      
       <div class="flex justify-center items-center gap-6 text-sm mt-4 border-t border-gray-700 pt-4">
         <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-accent"></div><span class="text-gray-400">امتحان حصة</span></div>
         <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-warning"></div><span class="text-gray-400">امتحان شهر</span></div>
       </div>
     </div>
 
-    <!-- Grades List (قائمة الدرجات التفاعلية) -->
-    <div id="gradesList" class="space-y-3 mb-4">
-      <!-- بيتم تعبئتها بالـ JS -->
-    </div>
+    <!-- Grades List -->
+    <div id="gradesList" class="space-y-3 mb-4"></div>
     
-    <!-- أزرار عرض المزيد / أقل -->
     <button id="showMoreBtn" onclick="toggleGrades()" class="w-full bg-[#1E293B] py-4 rounded-xl text-warning font-bold text-lg mb-8 hover:bg-[#334155] transition shadow-md border border-gray-700">عرض المزيد</button>
 
-    <!-- Payments Log (سجل المدفوعات) -->
+    <!-- Payments -->
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-bold">سجل المدفوعات والاشتراكات</h2>
       <i class="fa-solid fa-wallet text-success text-xl"></i>
@@ -193,7 +184,7 @@
       </div>
     </div>
 
-    <!-- Wallet Points (محفظة النقاط) -->
+    <!-- Wallet -->
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-bold">محفظة النقاط</h2>
       <i class="fa-solid fa-coins text-warning text-xl"></i>
@@ -215,7 +206,7 @@
       </div>
     </div>
 
-    <!-- Behavior Log (سلوك الطلاب) -->
+    <!-- Behavior -->
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-bold">سلوك الطلاب</h2>
       <i class="fa-solid fa-clipboard-check text-blue-400 text-xl"></i>
@@ -230,7 +221,7 @@
       </div>
     </div>
 
-    <!-- Contact Button & Footer -->
+    <!-- Footer -->
     <div class="flex flex-col items-center justify-center mt-6 mb-8">
       <button class="bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-bold py-4 px-12 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:opacity-90 transition flex items-center gap-3 text-lg">
         <i class="fa-solid fa-comment-dots"></i>
@@ -239,12 +230,10 @@
       <p class="text-sm text-textMuted mt-6">تم إنشاء هذا التقرير عبر تطبيق Classy</p>
     </div>
 
-  </div> <!-- نهاية الحاوية الرئيسية -->
-</div> <!-- نهاية العرض الكامل -->
+  </div>
+</div>
 
-<!-- JavaScript للتحكم في عرض الدرجات -->
 <script>
-  // كل الدرجات (فل مارك)
   const allGrades = [
     { date: "الخميس، ٢٩ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
     { date: "الأحد، ٢٥ أكتوبر ٢٠٢٦", type: "امتحان حصة", score: "20", max: "20" },
@@ -266,7 +255,6 @@
 
   function renderGrades() {
     gradesContainer.innerHTML = '';
-    // لو مش مفتوح بنعرض 3 بس، لو مفتوح بنعرض الكل
     const gradesToShow = isExpanded ? allGrades : allGrades.slice(0, 3);
 
     gradesToShow.forEach(grade => {
@@ -285,22 +273,20 @@
 
   function toggleGrades() {
     isExpanded = !isExpanded;
-    // تغيير النص واللون بناءً على الحالة
     if (isExpanded) {
       btn.innerText = "عرض أقل";
       btn.classList.remove('text-warning');
-      btn.classList.add('text-accent'); // لون أزرق
+      btn.classList.add('text-accent');
     } else {
       btn.innerText = "عرض المزيد";
       btn.classList.remove('text-accent');
-      btn.classList.add('text-warning'); // لون أصفر
+      btn.classList.add('text-warning');
     }
     renderGrades();
   }
 
-  // بنشغل الدالة أول ما الصفحة تفتح
   renderGrades();
 </script>
 
 </body>
-      </html>
+          </html>
